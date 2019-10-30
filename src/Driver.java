@@ -14,10 +14,13 @@ public class Driver {
 
   public static void main(String[] args) {
     ContactList contactList = new ContactList();
-    while(true) {
+    boolean quitRequested = false;
+    while(!quitRequested) {
       System.out.println(MENU);
+      Command com;
       try {
         String userInput = InputCollector.getUserInput(ASK_OPTION);
+        com = Command.parse(userInput);
       }
       catch (NoSuchElementException e) {
         System.err.println("Cannot read input.");
@@ -27,6 +30,13 @@ public class Driver {
         System.err.println("");
         break;
       }
+
+      switch (com) {
+        case QUIT:
+          quitRequested = true;
+          break;
+      }
     }
+    System.out.println("Bye!");
   }
 }
