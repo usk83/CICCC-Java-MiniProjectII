@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class ContactList {
+class ContactList {
   ArrayList<Contact> contacts;
-  public ContactList() {
+  ContactList() {
   }
 }

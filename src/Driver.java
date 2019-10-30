@@ -1,4 +1,4 @@
-class Driver {
+public class Driver {
   private static final String MENU = ""
       + "+≡≡≡  Contact  App  ≡≡≡+\n"
       + "| 1. List all Contacts |\n"

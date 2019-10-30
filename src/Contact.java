@@ -1,4 +1,4 @@
-public class Contact {
-  public Contact() {
+class Contact {
+  Contact() {
   }
 }
