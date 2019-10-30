@@ -1,3 +1,6 @@
+import java.lang.IllegalStateException;
+import java.util.NoSuchElementException;
+
 public class Driver {
   private static final String MENU = ""
       + "+≡≡≡  Contact  App  ≡≡≡+\n"
@@ -13,9 +16,17 @@ public class Driver {
     ContactList contactList = new ContactList();
     while(true) {
       System.out.println(MENU);
-      String userInput = InputCollector.getUserInput(ASK_OPTION);
-      System.out.printf("userInput: %s\n", userInput);
-      break;
+      try {
+        String userInput = InputCollector.getUserInput(ASK_OPTION);
+      }
+      catch (NoSuchElementException e) {
+        System.err.println("Cannot read input.");
+        continue;
+      }
+      catch (IllegalStateException e) {
+        System.err.println("");
+        break;
+      }
     }
   }
 }
