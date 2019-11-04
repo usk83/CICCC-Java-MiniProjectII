@@ -4,6 +4,7 @@ enum Command {
 
   static Command parse(String str) {
     switch (str.toLowerCase()) {
+      case "5":
       case "q":
       case "quit":
         return QUIT;
