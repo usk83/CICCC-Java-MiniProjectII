@@ -1,4 +1,5 @@
 import java.lang.IllegalStateException;
+import java.lang.NumberFormatException;
 
 public class Driver {
   private static final String MENU = ""
@@ -43,6 +44,36 @@ public class Driver {
             System.exit(-1);
           }
           System.out.println("Successfully added a new contact!");
+          break;
+        case REMOVE:
+          if (contactList.printAllContacts() == 0) {
+            continue;
+          }
+          String index = "";
+          try {
+            index = InputCollector.getUserInput("Enter the index of the contact to remove: \n");
+          }
+          catch (IllegalStateException e) {
+            System.err.println("Something went wrong.");
+            System.exit(-1);
+          }
+          if (index.isEmpty()) {
+            continue;
+          }
+          Contact removedContact;
+          try {
+            removedContact = contactList.removeContact(index);
+          }
+          catch(NumberFormatException e) {
+            System.err.println("Invalid Input.");
+            continue;
+          }
+          if (removedContact == null) {
+            System.err.println("Specified entry is not found.");
+            continue;
+          }
+          System.out.println("Successfully removed " + removedContact.getName());
+
           break;
         case QUIT:
           quitRequested = true;

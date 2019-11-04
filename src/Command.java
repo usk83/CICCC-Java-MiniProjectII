@@ -1,6 +1,7 @@
 enum Command {
   LIST,
   NEW,
+  REMOVE,
   QUIT,
   INVALID;
 
@@ -14,6 +15,10 @@ enum Command {
       case "n":
       case "new":
         return NEW;
+      case "3":
+      case "r":
+      case "remove":
+        return REMOVE;
       case "5":
       case "q":
       case "quit":
