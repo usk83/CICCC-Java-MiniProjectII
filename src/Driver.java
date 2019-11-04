@@ -1,5 +1,4 @@
 import java.lang.IllegalStateException;
-import java.util.NoSuchElementException;
 
 public class Driver {
   private static final String MENU = ""
@@ -17,21 +16,15 @@ public class Driver {
     boolean quitRequested = false;
     while(!quitRequested) {
       System.out.println(MENU);
-      Command com;
+      String userInput = "";
       try {
-        String userInput = InputCollector.getUserInput(ASK_OPTION);
-        com = Command.parse(userInput);
-      }
-      catch (NoSuchElementException e) {
-        System.err.println("Cannot read input.");
-        continue;
+        userInput = InputCollector.getUserInput(ASK_OPTION);
       }
       catch (IllegalStateException e) {
-        System.err.println("");
-        break;
+        System.err.println("Something went wrong.");
+        System.exit(-1);
       }
-
-      switch (com) {
+      switch (Command.parse(userInput)) {
         case QUIT:
           quitRequested = true;
           break;
