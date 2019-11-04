@@ -12,14 +12,15 @@ class ContactList {
     contacts.add(newContact);
   }
 
-  public void printAllContacts() {
+  public int printAllContacts() {
     int size = contacts.size();
     if (size == 0) {
       System.out.println("no entry.");
-      return;
+    } else {
+      for (int i = 0; i < size; i++) {
+        System.out.println(String.format("%d: %s", i, contacts.get(i)));
+      }
     }
-    for (int i = 0; i < size; i++) {
-      System.out.println(String.format("%d: %s", i, contacts.get(i)));
-    }
+    return size;
   }
 }
