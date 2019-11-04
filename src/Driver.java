@@ -25,6 +25,9 @@ public class Driver {
         System.exit(-1);
       }
       switch (Command.parse(userInput)) {
+        case LIST:
+          contactList.printAllContacts();
+          break;
         case NEW:
           try {
             contactList.addContact(new Contact(
