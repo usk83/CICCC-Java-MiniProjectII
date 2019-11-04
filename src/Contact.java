@@ -24,6 +24,10 @@ class Contact {
     this.city = city;
   }
 
+  public String getName() {
+    return name;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
