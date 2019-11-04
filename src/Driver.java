@@ -28,6 +28,9 @@ public class Driver {
         case QUIT:
           quitRequested = true;
           break;
+        case INVALID:
+          System.err.println("Invalid Input. Enter number between 1 and 5.");
+          break;
       }
     }
     System.out.println("Bye!");
