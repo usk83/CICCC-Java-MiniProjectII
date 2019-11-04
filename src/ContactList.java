@@ -1,3 +1,4 @@
+import java.lang.NumberFormatException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,5 +23,23 @@ class ContactList {
       }
     }
     return size;
+  }
+
+  public Contact removeContact(String indexString) throws NumberFormatException {
+    int index;
+    try {
+      index = Integer.valueOf(indexString);
+    }
+    catch(NumberFormatException e) {
+      throw e;
+    }
+    return removeContact(index);
+  }
+
+  public Contact removeContact(int index) {
+    if (index < 0 || index >= contacts.size()) {
+      return null;
+    }
+    return contacts.remove(index);
   }
 }
