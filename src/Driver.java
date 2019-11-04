@@ -25,6 +25,22 @@ public class Driver {
         System.exit(-1);
       }
       switch (Command.parse(userInput)) {
+        case NEW:
+          try {
+            contactList.addContact(new Contact(
+              InputCollector.getUserInput("Enter name: ", true),
+              InputCollector.getUserInput("Enter mobile: ", true),
+              InputCollector.getUserInput("Enter work: "),
+              InputCollector.getUserInput("Enter home: "),
+              InputCollector.getUserInput("Enter city: ")
+            ));
+          }
+          catch (IllegalStateException e) {
+            System.err.println("Something went wrong.");
+            System.exit(-1);
+          }
+          System.out.println("Successfully added a new contact!");
+          break;
         case QUIT:
           quitRequested = true;
           break;
