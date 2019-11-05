@@ -30,8 +30,7 @@ class ContactList {
     int index;
     try {
       index = Integer.valueOf(indexString);
-    }
-    catch (NumberFormatException e) {
+    } catch (NumberFormatException e) {
       throw e;
     }
     return removeContact(index);
@@ -49,8 +48,7 @@ class ContactList {
     int index;
     try {
       index = Integer.valueOf(indexString);
-    }
-    catch (NumberFormatException e) {
+    } catch (NumberFormatException e) {
       throw e;
     }
     return getContact(index);

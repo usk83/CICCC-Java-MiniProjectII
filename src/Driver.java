@@ -20,8 +20,7 @@ public class Driver {
       String userInput = "";
       try {
         userInput = InputCollector.getUserInput(ASK_OPTION);
-      }
-      catch (IllegalStateException e) {
+      } catch (IllegalStateException e) {
         System.err.println("Something went wrong.");
         System.exit(-1);
       }
@@ -38,8 +37,7 @@ public class Driver {
               InputCollector.getUserInput("Enter home: "),
               InputCollector.getUserInput("Enter city: ")
             ));
-          }
-          catch (IllegalStateException e) {
+          } catch (IllegalStateException e) {
             System.err.println("Something went wrong.");
             System.exit(-1);
           }
@@ -52,8 +50,7 @@ public class Driver {
           String index = "";
           try {
             index = InputCollector.getUserInput("Enter the index of the contact to remove: \n");
-          }
-          catch (IllegalStateException e) {
+          } catch (IllegalStateException e) {
             System.err.println("Something went wrong.");
             System.exit(-1);
           }
@@ -63,8 +60,7 @@ public class Driver {
           Contact removedContact;
           try {
             removedContact = contactList.removeContact(index);
-          }
-          catch (NumberFormatException e) {
+          } catch (NumberFormatException e) {
             System.err.println("Invalid Input.");
             continue;
           }

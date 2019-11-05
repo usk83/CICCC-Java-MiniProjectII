@@ -24,13 +24,11 @@ class InputCollector {
       System.out.print(ANSI_GREEN);
       try {
         input = STDIN_SCANNER.nextLine();
-      }
-      catch (NoSuchElementException e) {
+      } catch (NoSuchElementException e) {
         System.out.print(ANSI_RESET);
         System.err.println("Cannot read input. Try again.");
         continue;
-      }
-      catch (IllegalStateException e) {
+      } catch (IllegalStateException e) {
         throw e;
       }
       finally {
