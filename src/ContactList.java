@@ -9,10 +9,6 @@ class ContactList {
     contacts = new ArrayList<>();
   }
 
-  public void addContact(Contact newContact) {
-    contacts.add(newContact);
-  }
-
   public int printAllContacts() {
     int size = contacts.size();
     if (size == 0) {
@@ -23,6 +19,10 @@ class ContactList {
       }
     }
     return size;
+  }
+
+  public void addContact(Contact newContact) {
+    contacts.add(newContact);
   }
 
   public Contact removeContact(String indexString) throws NumberFormatException {
