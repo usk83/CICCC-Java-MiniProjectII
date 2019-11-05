@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 public class Driver {
   private static final Pattern REGEX_PATTER_PHONE_NUMBER
     = Pattern.compile("^(\\+\\d{1,2} ?)?\\(?\\d{2,4}\\)?[ -]?\\d{3,4}-?\\d{3,4}$");
-
   private static final String MENU = ""
       + "+≡≡≡  Contact  App  ≡≡≡+\n"
       + "| 1. List all Contacts |\n"
