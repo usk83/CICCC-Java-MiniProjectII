@@ -34,8 +34,9 @@ public class Driver {
           break;
         }
         case NEW: {
+          boolean added = false;
           try {
-            contactList.addContact(new Contact(
+            added = contactList.addContact(new Contact(
               InputCollector.getUserInput("Enter name: ", true),
               InputCollector.getUserInput("Enter mobile: ", true, REGEX_PATTER_PHONE_NUMBER),
               InputCollector.getUserInput("Enter work: ", REGEX_PATTER_PHONE_NUMBER),
@@ -46,7 +47,11 @@ public class Driver {
             System.err.println("Something went wrong.");
             System.exit(-1);
           }
-          System.out.println("Successfully added a new contact!");
+          if (added) {
+            System.out.println("Successfully added a new contact!");
+          } else {
+            System.err.println("Cannot add to ContactList. The contact is duplicated.");
+          }
           break;
         }
         case REMOVE: {
@@ -114,7 +119,11 @@ public class Driver {
             InputCollector.getUserInput("Enter city: ")
           );
           Contact updaredContact = contactList.updateContact(indexNumber, newContact);
-          System.out.printf("Successfully updated %s to %s\n", updaredContact, newContact);
+          if (updaredContact != null) {
+            System.out.printf("Successfully updated %s to %s\n", updaredContact, newContact);
+          } else {
+            System.err.println("Cannot update. The contact is duplicated.");
+          }
           break;
         }
         case QUIT: {

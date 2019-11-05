@@ -1,13 +1,18 @@
 import java.lang.IndexOutOfBoundsException;
 import java.lang.NumberFormatException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 
 class ContactList {
   List<Contact> contacts;
+  Set<List<String>> uniqueEntries;
 
   ContactList() {
     contacts = new ArrayList<>();
+    uniqueEntries = new HashSet<List<String>>();
   }
 
   public int printAllContacts() {
@@ -22,8 +27,30 @@ class ContactList {
     return size;
   }
 
-  public void addContact(Contact newContact) {
-    contacts.add(newContact);
+  private List<String> convertToEntry(Contact contact) {
+    return new ArrayList<>(){{
+      add(contact.getName());
+      add(contact.getPhoneNumberMobile());
+    }};
+  }
+
+  private boolean checkIfDuplicated(Contact contact) {
+    return uniqueEntries.contains(convertToEntry(contact));
+  }
+
+  private boolean addEntry(Contact contact) {
+    return uniqueEntries.add(convertToEntry(contact));
+  }
+
+  private boolean removeEntry(Contact contact) {
+    return uniqueEntries.remove(convertToEntry(contact));
+  }
+
+  public boolean addContact(Contact newContact) {
+    if (!addEntry(newContact)) {
+      return false;
+    }
+    return contacts.add(newContact);
   }
 
   public Contact removeContact(String indexString)
@@ -38,19 +65,43 @@ class ContactList {
   }
 
   public Contact removeContact(int index) throws IndexOutOfBoundsException {
+    Contact removedContact;
     try {
-      return contacts.remove(index);
+      removedContact = contacts.remove(index);
     } catch (NumberFormatException e) {
       throw e;
     }
+    removeEntry(removedContact);
+    return removedContact;
   }
 
   public Contact updateContact(int index, Contact newContact) throws IndexOutOfBoundsException {
+    Contact updatedContact;
     try {
-      return contacts.set(index, newContact);
+      updatedContact = contacts.get(index);
     } catch (IndexOutOfBoundsException e) {
       throw e;
     }
+
+    boolean same = updatedContact.getName().equals(newContact.getName())
+      && updatedContact.getPhoneNumberMobile().equals(newContact.getPhoneNumberMobile());
+
+    if (!same && checkIfDuplicated(newContact)) {
+      return null;
+    }
+
+    try {
+      updatedContact = contacts.set(index, newContact);
+    } catch (IndexOutOfBoundsException e) {
+      throw e;
+    }
+
+    if (!same) {
+      addEntry(newContact);
+      removeEntry(updatedContact);
+    }
+
+    return updatedContact;
   }
 
   public Contact getContact(String indexString)
