@@ -1,7 +1,11 @@
 import java.lang.IllegalStateException;
 import java.lang.NumberFormatException;
+import java.util.regex.Pattern;
 
 public class Driver {
+  private static final Pattern REGEX_PATTER_PHONE_NUMBER
+    = Pattern.compile("^(\\+\\d{1,2} ?)?\\(?\\d{2,4}\\)?[ -]?\\d{3,4}-?\\d{3,4}$");
+
   private static final String MENU = ""
       + "+≡≡≡  Contact  App  ≡≡≡+\n"
       + "| 1. List all Contacts |\n"
@@ -33,9 +37,9 @@ public class Driver {
           try {
             contactList.addContact(new Contact(
               InputCollector.getUserInput("Enter name: ", true),
-              InputCollector.getUserInput("Enter mobile: ", true),
-              InputCollector.getUserInput("Enter work: "),
-              InputCollector.getUserInput("Enter home: "),
+              InputCollector.getUserInput("Enter mobile: ", true, REGEX_PATTER_PHONE_NUMBER),
+              InputCollector.getUserInput("Enter work: ", REGEX_PATTER_PHONE_NUMBER),
+              InputCollector.getUserInput("Enter home: ", REGEX_PATTER_PHONE_NUMBER),
               InputCollector.getUserInput("Enter city: ")
             ));
           } catch (IllegalStateException e) {
@@ -104,9 +108,9 @@ public class Driver {
 
           Contact newContact = new Contact(
             InputCollector.getUserInput("Enter name: ", true),
-            InputCollector.getUserInput("Enter mobile: ", true),
-            InputCollector.getUserInput("Enter work: "),
-            InputCollector.getUserInput("Enter home: "),
+            InputCollector.getUserInput("Enter mobile: ", true, REGEX_PATTER_PHONE_NUMBER),
+            InputCollector.getUserInput("Enter work: ", REGEX_PATTER_PHONE_NUMBER),
+            InputCollector.getUserInput("Enter home: ", REGEX_PATTER_PHONE_NUMBER),
             InputCollector.getUserInput("Enter city: ")
           );
           Contact updaredContact = contactList.updateContact(indexNumber, newContact);
