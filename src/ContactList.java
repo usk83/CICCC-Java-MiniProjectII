@@ -26,7 +26,8 @@ class ContactList {
     contacts.add(newContact);
   }
 
-  public Contact removeContact(String indexString) throws NumberFormatException {
+  public Contact removeContact(String indexString)
+      throws NumberFormatException, IndexOutOfBoundsException {
     int index;
     try {
       index = Integer.valueOf(indexString);
@@ -36,11 +37,12 @@ class ContactList {
     return removeContact(index);
   }
 
-  public Contact removeContact(int index) {
-    if (index < 0 || index >= contacts.size()) {
-      return null;
+  public Contact removeContact(int index) throws IndexOutOfBoundsException {
+    try {
+      return contacts.remove(index);
+    } catch (NumberFormatException e) {
+      throw e;
     }
-    return contacts.remove(index);
   }
 
   public Contact getContact(String indexString)

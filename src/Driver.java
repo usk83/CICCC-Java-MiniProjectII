@@ -65,8 +65,7 @@ public class Driver {
           } catch (NumberFormatException e) {
             System.err.println("Invalid Input.");
             continue;
-          }
-          if (removedContact == null) {
+          } catch (IllegalStateException e) {
             System.err.println("Specified entry is not found.");
             continue;
           }
