@@ -28,7 +28,8 @@ enum Command {
       case "q":
       case "quit":
         return QUIT;
+      default:
+        return INVALID;
     }
-    return INVALID;
   }
 }
