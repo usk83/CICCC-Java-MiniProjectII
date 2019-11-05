@@ -7,6 +7,16 @@ enum Command {
   INVALID;
 
   static Command parse(String str) {
+    // JEP 361: Switch Expressions (Standard)
+    // https://openjdk.java.net/jeps/361
+    // return switch (str.toLowerCase()) {
+    //   case "1", "l", "list" -> LIST;
+    //   case "2", "n", "new" -> NEW;
+    //   case "3", "r", "remove" -> REMOVE;
+    //   case "4", "u", "update" -> UPDATE;
+    //   case "5", "q", "quit" -> QUIT;
+    //   default -> INVALID;
+    // };
     switch (str.toLowerCase()) {
       case "1":
       case "l":
