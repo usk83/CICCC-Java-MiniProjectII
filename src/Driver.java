@@ -25,10 +25,11 @@ public class Driver {
         System.exit(-1);
       }
       switch (Command.parse(userInput)) {
-        case LIST:
+        case LIST: {
           contactList.printAllContacts();
           break;
-        case NEW:
+        }
+        case NEW: {
           try {
             contactList.addContact(new Contact(
               InputCollector.getUserInput("Enter name: ", true),
@@ -43,7 +44,8 @@ public class Driver {
           }
           System.out.println("Successfully added a new contact!");
           break;
-        case REMOVE:
+        }
+        case REMOVE: {
           if (contactList.printAllContacts() == 0) {
             continue;
           }
@@ -71,12 +73,15 @@ public class Driver {
           System.out.println("Successfully removed " + removedContact.getName());
 
           break;
-        case QUIT:
+        }
+        case QUIT: {
           quitRequested = true;
           break;
-        case INVALID:
+        }
+        case INVALID: {
           System.err.println("Invalid Input. Enter number between 1 and 5.");
           break;
+        }
       }
     }
     System.out.println("Bye!");
