@@ -1,3 +1,4 @@
+import java.lang.IndexOutOfBoundsException;
 import java.lang.NumberFormatException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,5 +42,25 @@ class ContactList {
       return null;
     }
     return contacts.remove(index);
+  }
+
+  public Contact getContact(String indexString)
+      throws NumberFormatException, IndexOutOfBoundsException {
+    int index;
+    try {
+      index = Integer.valueOf(indexString);
+    }
+    catch(NumberFormatException e) {
+      throw e;
+    }
+    return getContact(index);
+  }
+
+  public Contact getContact(int index) throws IndexOutOfBoundsException{
+    try {
+      return contacts.get(index);
+    } catch(IndexOutOfBoundsException e) {
+      throw e;
+    }
   }
 }
