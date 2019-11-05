@@ -45,6 +45,14 @@ class ContactList {
     }
   }
 
+  public Contact updateContact(int index, Contact newContact) throws IndexOutOfBoundsException {
+    try {
+      return contacts.set(index, newContact);
+    } catch (IndexOutOfBoundsException e) {
+      throw e;
+    }
+  }
+
   public Contact getContact(String indexString)
       throws NumberFormatException, IndexOutOfBoundsException {
     int index;
