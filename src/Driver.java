@@ -64,7 +64,7 @@ public class Driver {
           try {
             removedContact = contactList.removeContact(index);
           }
-          catch(NumberFormatException e) {
+          catch (NumberFormatException e) {
             System.err.println("Invalid Input.");
             continue;
           }

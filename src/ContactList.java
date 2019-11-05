@@ -31,7 +31,7 @@ class ContactList {
     try {
       index = Integer.valueOf(indexString);
     }
-    catch(NumberFormatException e) {
+    catch (NumberFormatException e) {
       throw e;
     }
     return removeContact(index);
@@ -50,16 +50,16 @@ class ContactList {
     try {
       index = Integer.valueOf(indexString);
     }
-    catch(NumberFormatException e) {
+    catch (NumberFormatException e) {
       throw e;
     }
     return getContact(index);
   }
 
-  public Contact getContact(int index) throws IndexOutOfBoundsException{
+  public Contact getContact(int index) throws IndexOutOfBoundsException {
     try {
       return contacts.get(index);
-    } catch(IndexOutOfBoundsException e) {
+    } catch (IndexOutOfBoundsException e) {
       throw e;
     }
   }
