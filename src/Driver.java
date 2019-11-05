@@ -70,7 +70,47 @@ public class Driver {
             continue;
           }
           System.out.println("Successfully removed " + removedContact.getName());
+          break;
+        }
+        case UPDATE: {
+          if (contactList.printAllContacts() == 0) {
+            continue;
+          }
+          String index = "";
+          try {
+            index = InputCollector.getUserInput("Enter the index of the contact to update: \n");
+          } catch (IllegalStateException e) {
+            System.err.println("Something went wrong.");
+            System.exit(-1);
+          }
+          if (index.isEmpty()) {
+            continue;
+          }
 
+          int indexNumber;
+          try {
+            indexNumber = Integer.valueOf(index);
+          } catch (NumberFormatException e) {
+            System.err.println("Invalid Input.");
+            continue;
+          }
+
+          try {
+            contactList.getContact(indexNumber);
+          } catch (IndexOutOfBoundsException e) {
+            System.err.println("Specified entry is not found.");
+            continue;
+          }
+
+          Contact newContact = new Contact(
+            InputCollector.getUserInput("Enter name: ", true),
+            InputCollector.getUserInput("Enter mobile: ", true),
+            InputCollector.getUserInput("Enter work: "),
+            InputCollector.getUserInput("Enter home: "),
+            InputCollector.getUserInput("Enter city: ")
+          );
+          Contact updaredContact = contactList.updateContact(indexNumber, newContact);
+          System.out.printf("Successfully updated %s to %s\n", updaredContact, newContact);
           break;
         }
         case QUIT: {

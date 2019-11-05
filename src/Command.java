@@ -2,6 +2,7 @@ enum Command {
   LIST,
   NEW,
   REMOVE,
+  UPDATE,
   QUIT,
   INVALID;
 
@@ -19,6 +20,10 @@ enum Command {
       case "r":
       case "remove":
         return REMOVE;
+      case "4":
+      case "u":
+      case "update":
+        return UPDATE;
       case "5":
       case "q":
       case "quit":
