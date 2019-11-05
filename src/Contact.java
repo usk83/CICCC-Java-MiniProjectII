@@ -28,6 +28,10 @@ class Contact {
     return name;
   }
 
+  public String getPhoneNumberMobile() {
+    return phoneNumberMobile;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
